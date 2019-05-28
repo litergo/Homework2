@@ -18,25 +18,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIViewController *leftViewController = [UIViewController new];
-    leftViewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height/2.0);
-    leftViewController.view.backgroundColor = [UIColor redColor];
-    
-    UIViewController *rightViewController = [UIViewController new];
-    rightViewController.view.frame = CGRectMake(0, UIScreen.mainScreen.bounds.size.height/2.0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height/2.0);
-    rightViewController.view.backgroundColor = [UIColor greenColor];
+    UIViewController *topViewController = [UIViewController new];
+    topViewController.view.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height/2.0);
+    topViewController.view.backgroundColor = [UIColor redColor];
+    topViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
 
-    [self addChildViewController:leftViewController];
-    [self addChildViewController:rightViewController];
+    UIViewController *bottomViewController = [UIViewController new];
+    bottomViewController.view.frame = CGRectMake(0, UIScreen.mainScreen.bounds.size.height/2.0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height/2.0);
+    bottomViewController.view.backgroundColor = [UIColor greenColor];
+    bottomViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+
+    [self addChildViewController:topViewController];
+    [self addChildViewController:bottomViewController];
     
-    [self.view addSubview:leftViewController.view];
-    [self.view  addSubview:rightViewController.view];
+    [self.view addSubview:topViewController.view];
+    [self.view  addSubview:bottomViewController.view];
     
-    [leftViewController didMoveToParentViewController:self];
-    [rightViewController didMoveToParentViewController:self];
-    
-//    self.view.backgroundColor = [UIColor blueColor];
-    
+    [topViewController didMoveToParentViewController:self];
+    [bottomViewController didMoveToParentViewController:self];
+        
 }
 
 
